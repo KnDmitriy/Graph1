@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 
@@ -215,6 +215,16 @@ namespace Graph1
                     WayFloyd(k, b, p, ref items);
                 }
             }
+            public void ShowIncommingNodes(int numOfNode)
+            {
+                for(int i = 0; i < Size; ++i)
+                {
+                    if(array[i, numOfNode] != 0)
+                    {
+                        Console.Write("{0} ", i);
+                    }
+                }
+            }
         } //конец вложенного клаcса
         private Node graph; //закрытое поле, реализующее АТД «граф»
         public Graph(string name) //конструктор внешнего класса
@@ -234,6 +244,10 @@ namespace Graph1
                 }
                 graph = new Node(a);
             }
+        }
+        public void ShowIncommingNodes(int numOfNode)
+        {
+            graph.ShowIncommingNodes(numOfNode);
         }
         //метод выводит матрицу смежности на консольное окно
         public void Show()
@@ -285,6 +299,7 @@ namespace Graph1
                 Console.WriteLine();
             }
         }
+        
         public void Floyd()
         {
             int[,] p;
